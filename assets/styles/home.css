@@ -1,5 +1,4 @@
 /* Initial element properties */
-
 .content-container {
 
     display: flex;
@@ -9,7 +8,8 @@
 
     flex-direction: column;
 
-    height: 1500px;
+    max-height: 1300px;
+    overflow: hidden;
 
 }
 
@@ -50,8 +50,6 @@
 .hero-image::after {
 
     content: "";
-
-    position: absolute;
 
     bottom: 0;
     left: 0;
@@ -132,6 +130,13 @@
 
 }
 
+.point-down:hover {
+
+    cursor: pointer;
+    /* animation: none; */
+
+}
+
 .segment-container {
 
     display: flex;
@@ -192,25 +197,78 @@
 
 .contact-list {
 
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
     list-style-type: none;
+
+    gap: 5px;
 
 }
 
 .contact-item {
 
-    
+    width: 200px;
+
+    /* display: flex; */
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 40px;
+
+    gap: 20px;
+
+}
+
+.contact-item .name {
+
+    /* text-decoration: underline; */
+
+    font-size: 25px;
+    text-shadow: 0 0 1.5px white;
+
+    margin-bottom: 2px;
+
+    font-weight: 600;
+
+}
+
+.contact-item:hover {
+
+    cursor: pointer;
 
 }
 
 .contact-item .icon {
 
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 
     background-size: 100%;
 
-    background-image: url('../images/discord.gif');
+    filter: brightness(0) invert(1);
+
+    background-image: url('../images/twitter.gif');
     
+}
+
+.bottom-img {
+
+    filter: brightness(0) invert(1);
+
+    width: 100%;
+    height: auto;
+
+    transform: translate(0, -10%);
+
+    z-index: -11;
+
 }
 
 /* Animations */

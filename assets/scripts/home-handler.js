@@ -28,8 +28,30 @@ savedData.age = getTimeDiff(curDate, savedData.dateOfBirth).years;
 
 savedData.description = `I am a full-stack developer, currently have ${savedData.timePassed.years} years and ${savedData.timePassed.months} month${savedData.months === 1 ? '' : 's'} of experience (dynamically updated). ${savedData.age} years old and studying computer science. Have experience in making VFX as well including making particle emitters, meshes, trails etc.`;
 
+savedData.socialMedia = {
+
+    'Discord':`https://discord.com/users/478088654665940995/`,
+    'Twitter':`https://twitter.com/DerzeTT1`
+
+};
+
+//Directories
+const imageDir = '../assets/images';
+
 //Elements
 const descriptionText = document.querySelector('.description-text');
+const downPointer = document.querySelector('.point-down');
+
+const contactList = document.querySelector('.contact-list');
+
+const contactItemSample = document.querySelector('.contact-item');
+
+//Bindings
+downPointer.addEventListener('click', () => {
+
+    $(window).scrollTop(window.innerHeight/2);
+
+});
 
 const typeWriterEffect = (targetElement, fullText, duration) => {
 
@@ -42,7 +64,7 @@ const typeWriterEffect = (targetElement, fullText, duration) => {
 
         if (i >= splitted.length){return};
 
-        const newWord = splitted[i]+' ';
+        const newWord = splitted[i]+(i == splitted.length-1 ? '' : ' ');
         currentText += newWord;
 
         targetElement.innerText = currentText;
@@ -59,8 +81,39 @@ const typeWriterEffect = (targetElement, fullText, duration) => {
 
 const loadEffects = () => {
 
-    typeWriterEffect(descriptionText, savedData.description, 50);
+    typeWriterEffect(descriptionText, savedData.description, 30);
 
 };
 
 window.addEventListener('load', loadEffects);
+
+const createNewContact = (contactLink, contactName) => {
+
+    let sampleClone = contactItemSample.cloneNode(true);
+    contactList.appendChild(sampleClone);
+
+    sampleClone.style.display = 'flex';
+
+    let sampleName = sampleClone.querySelector('.name');
+    let sampleIcon = sampleClone.querySelector('.icon');
+
+    const staticIcon = imageDir+`/${contactName.toLowerCase()}-static.svg`;
+
+    sampleName.innerText = contactName;
+
+    sampleClone.addEventListener('click', () => {
+
+        window.open(contactLink, '_blank');
+
+    });
+
+    sampleIcon.style['background-image'] = `url(${staticIcon})`;
+
+};
+
+for (let contactName in savedData.socialMedia){
+
+    let contactLink = savedData.socialMedia[contactName];
+    createNewContact(contactLink, contactName);
+
+};
