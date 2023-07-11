@@ -47,7 +47,7 @@
 
 }
 
-.hero-image::after {
+/* .hero-image::after {
 
     content: "";
 
@@ -61,7 +61,7 @@
     
     background-image: linear-gradient(to bottom, transparent, var(--bg-color));
 
-}
+} */
 
 .hero-text-container {
 
@@ -73,7 +73,7 @@
 
     flex-direction: column;
 
-    margin-top: 70px;
+    /* margin-top: 70px; */
     
 }
 
